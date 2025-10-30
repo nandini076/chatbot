@@ -4,11 +4,21 @@
    - Uses Advice Slip API as a fallback (no auth required)
 */
 
+// Chat UI Elements
 const chatbotToggler = document.querySelector(".chatbot-toggler");
 const closeBtn = document.querySelector(".close-btn");
 const chatInput = document.querySelector(".chat-input textarea");
-const sendChatbtn = document.querySelector(".chat-input span");
+const sendChatbtn = document.querySelector(".send-btn"); // Updated to match new HTML
 const chatbox = document.querySelector(".chatbox");
+
+// Debug element presence
+console.log('Chat elements found:', {
+    toggler: !!chatbotToggler,
+    closeBtn: !!closeBtn,
+    input: !!chatInput,
+    sendBtn: !!sendChatbtn,
+    chatbox: !!chatbox
+});
 
 let userMessage = null; // Variable to store user's message
 
@@ -193,6 +203,26 @@ if (chatInput) {
   });
 }
 
-if (sendChatbtn) sendChatbtn.addEventListener('click', handleChat);
-if (closeBtn) closeBtn.addEventListener('click', () => document.body.classList.remove('show-chatbot'));
-if (chatbotToggler) chatbotToggler.addEventListener('click', () => document.body.classList.toggle('show-chatbot'));
+// Event Listeners for chat controls
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize chat controls
+    if (sendChatbtn) {
+        sendChatbtn.addEventListener('click', handleChat);
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+            document.body.classList.remove('show-chatbot');
+            console.log('Chat closed');
+        });
+    }
+
+    if (chatbotToggler) {
+        chatbotToggler.addEventListener('click', () => {
+            document.body.classList.toggle('show-chatbot');
+            console.log('Chat toggled');
+        });
+    } else {
+        console.error('Chat toggler button not found');
+    }
+});

@@ -54,7 +54,6 @@ html, body {
     radial-gradient(circle at top left, #ff6b6b, transparent 50%),
     radial-gradient(circle at bottom right, #4ecdc4, transparent 50%);
   z-index: 1;
-  pointer-events: none;
 }
 
 .container::before {
@@ -250,18 +249,34 @@ body {
   border-radius: 50%;
   background: var(--primary-color);
   transition: all var(--transition);
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   z-index: 1000;
+  pointer-events: auto;
 }
 
 .chatbot-toggler:hover {
   transform: scale(1.1);
   background: var(--secondary-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .chatbot-toggler span {
   color: white;
   font-size: 1.5rem;
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.chatbot-toggler span:last-child {
+  opacity: 0;
+}
+
+body.show-chatbot .chatbot-toggler span:first-child {
+  opacity: 0;
+}
+
+body.show-chatbot .chatbot-toggler span:last-child {
+  opacity: 1;
 }
 
 @media (max-width: 768px) {

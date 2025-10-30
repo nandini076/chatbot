@@ -212,13 +212,15 @@ if (chatInput) {
     chatInput.style.height = `${chatInput.scrollHeight}px`;
   });
 
-  chatInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey && window.innerWidth > 800) {
-      e.preventDefault();
-      handleChat();
-    }
-  });
-}
+// ... in script.js
+
+chatInput.addEventListener('keydown', (e) => {
+    // New logic: If Enter is pressed and Shift is NOT pressed (i.e., simple Enter)
+    if (e.key === 'Enter' && !e.shiftKey) { 
+        e.preventDefault();
+        handleChat();
+    }
+});
 
 // Event Listeners for chat controls
 // Initialize immediately and also on DOMContentLoaded to ensure it works
@@ -264,3 +266,4 @@ function initializeChatControls() {
 }
 
 document.addEventListener("DOMContentLoaded", initializeChatControls);
+}

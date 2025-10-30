@@ -615,7 +615,7 @@ body.show-chatbot .chatbot {
 .chat.outgoing .message {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: white;
-  border-radius: 1rem 1rem 0 1rem;
+  border-radius: 1rem 1rem 0rem 1rem;
   border: none;
   box-shadow: 0 2px 8px rgba(108, 92, 231, 0.2);
 }
@@ -840,4 +840,72 @@ body.show-chatbot .chatbot {
     line-height: 55px;
     font-size: 1.35rem;
   }
+}
+
+/* TEMPORARY TEST: To override any parent reversal */
+.chat-content {
+    /* Force the default left-to-right flow for all chat content */
+    flex-direction: row !important; 
+}
+.chat.outgoing .chat-content {
+    /* Force the right-to-left flow ONLY for user messages */
+    flex-direction: row-reverse !important;
+}
+
+/* =======================================================
+   MOBILE MEDIA QUERIES (max-width: 800px)
+   ======================================================= */
+@media (max-width: 800px) {
+    /* 1. Main Chatbot Toggler Position and Size */
+    .chatbot-toggler {
+        /* Make icon a bit smaller for phones */
+        right: 20px !important;
+        bottom: 20px !important;
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    /* 2. Chatbot Window Size and Position */
+    .chatbot {
+        /* Make the chatbot take up most of the screen */
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 0 !important; /* No rounded corners on fullscreen */
+    }
+
+    /* 3. Initial Welcome Screen Handling (Optional) */
+    /* If the welcome screen is still visible, hide it when the chat is open */
+    body.show-chatbot .welcome-screen {
+        display: none;
+    }
+
+    /* 4. Chatbox and Content Sizing */
+    .chatbox {
+        padding: 0 10px; /* Adjust padding for tight screens */
+    }
+
+    /* 5. Input Area Styling */
+    .chat-input {
+        padding: 8px 10px; /* Adjust padding */
+    }
+
+    .chat-input textarea {
+        font-size: 16px; /* Ensure input text is readable */
+    }
+    
+    /* 6. Message Bubble Styling */
+    .chat .message {
+        font-size: 0.9rem; /* Slightly smaller text for messages */
+        max-width: 85%; /* Allow bubbles to take up more width on smaller screens */
+    }
+
+    /* 7. Header and Icon Adjustments */
+    .chatbot header h2 {
+        font-size: 1.1rem;
+    }
+    .chatbot header span {
+        font-size: 20px;
+    }
 }

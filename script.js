@@ -44,8 +44,8 @@ const responses = {
     'I can assist with simple math, friendly chat, and general info. What would you like?'
   ],
   name: [
-    'I\'m ChatBot! Your friendly AI assistant!',
-    'You can call me ChatBot! I\'m here to help and chat!'
+    'I\'m Nexa! Your friendly AI assistant!',
+    'You can call me Nexa! I\'m here to help and chat!'
   ],
   about: [
     'I\'m an AI chatbot created to help and chat with you!',

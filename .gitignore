@@ -17,3 +17,6 @@ npm-debug.log*
 # OS generated files
 .DS_Store
 Thumbs.db
+
+# Lockfiles
+package-lock.json
